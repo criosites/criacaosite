@@ -7,470 +7,136 @@
     <meta name="keywords" content="criação de sites Campinas, desenvolvimento web Campinas, hospedagem de sites, agência web Campinas, criação sites Campinas">
     <title>Criação de Sites em Campinas | Criosites - Desenvolvimento Web Profissional</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.8; color: #333; background-color: #f8f9fa; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%); color: white; padding: 60px 0; text-align: center; position: relative; overflow: hidden; }
+        header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="2"/></svg>') repeat; background-size: 100px 100px; }
+        header h1 { font-size: 3em; margin-bottom: 15px; position: relative; z-index: 1; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        header p { font-size: 1.3em; opacity: 0.9; position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .cta-button { display: inline-block; background: #ff6f00; color: white; padding: 15px 40px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1.1em; margin-top: 30px; transition: all 0.3s ease; position: relative; z-index: 1; }
+        .cta-button:hover { background: #e65100; transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255,111,0,0.4); }
+        nav { background: #0d1642; padding: 15px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; }
+        nav a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; padding: 5px 10px; }
+        nav a:hover { color: #ff6f00; }
+        section { padding: 60px 0; }
+        section:nth-child(even) { background: white; }
+        h2 { font-size: 2.5em; color: #1a237e; margin-bottom: 30px; text-align: center; position: relative; padding-bottom: 15px; }
+        h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: #ff6f00; border-radius: 2px; }
+        h3 { font-size: 1.8em; color: #283593; margin: 30px 0 15px; }
+        p { margin-bottom: 15px; text-align: justify; font-size: 1.05em; }
+        .image-container { text-align: center; margin: 40px 0; }
+        .image-container img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.15); }
+        .image-caption { font-style: italic; color: #666; margin-top: 10px; font-size: 0.95em; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; border-top: 4px solid #ff6f00; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+        .card h3 { font-size: 1.4em; margin-top: 0; color: #1a237e; }
+        .card-icon { font-size: 3em; margin-bottom: 15px; }
+        .faq-item { background: white; margin-bottom: 15px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .faq-question { background: #f5f5f5; padding: 20px 25px; cursor: pointer; font-weight: bold; color: #1a237e; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
+        .faq-question:hover { background: #e8eaf6; }
+        .faq-answer { padding: 20px 25px; display: none; border-top: 1px solid #e0e0e0; }
+        .faq-answer.active { display: block; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 40px; }
+        .testimonial { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); position: relative; }
+        .testimonial::before { content: '"'; font-size: 4em; color: #ff6f00; opacity: 0.3; position: absolute; top: 10px; left: 20px; line-height: 1; }
+        .testimonial-text { font-style: italic; margin-bottom: 20px; padding-left: 20px; position: relative; z-index: 1; }
+        .testimonial-author { font-weight: bold; color: #1a237e; }
+        .testimonial-company { color: #666; font-size: 0.9em; }
+        .stars { color: #ffc107; margin-bottom: 10px; font-size: 1.2em; }
+        .highlight-box { background: linear-gradient(135deg, #1a237e, #3949ab); color: white; padding: 50px; border-radius: 20px; text-align: center; margin: 50px 0; }
+        .highlight-box h3 { color: white; font-size: 2em; margin-bottom: 20px; }
+        .highlight-box p { text-align: center; font-size: 1.1em; margin-bottom: 25px; }
+        .phone-number { display: inline-block; background: #ff6f00; color: white; padding: 15px 40px; border-radius: 50px; font-size: 1.5em; font-weight: bold; text-decoration: none; margin-top: 10px; transition: all 0.3s; }
+        .phone-number:hover { background: #e65100; transform: scale(1.05); }
+        footer { background: #0d1642; color: white; padding: 50px 0 20px; text-align: center; }
+        footer a { color: #ff6f00; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; margin-bottom: 40px; }
+        .footer-section h4 { color: #ff6f00; margin-bottom: 15px; font-size: 1.2em; }
+        .footer-section ul { list-style: none; }
+        .footer-section li { margin-bottom: 8px; }
+        .footer-section a { color: #b0bec5; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; color: #90a4ae; }
+        @media (max-width: 768px) { header h1 { font-size: 2em; } h2 { font-size: 1.8em; } nav ul { gap: 15px; font-size: 0.9em; } .testimonials-grid { grid-template-columns: 1fr; } .floating-testimonial { display: none !important; } }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        ul.benefits-list { list-style: none; padding: 0; }
+        ul.benefits-list li { padding: 10px 0 10px 35px; position: relative; font-size: 1.05em; }
+        ul.benefits-list li::before { content: '✓'; position: absolute; left: 0; color: #ff6f00; font-weight: bold; font-size: 1.2em; }
+        .two-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        @media (max-width: 768px) { .two-columns { grid-template-columns: 1fr; } }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            color: #333;
-            background-color: #f8f9fa;
-        }
+        /* FLOATING TESTIMONIAL WIDGET */
+        .floating-testimonial { position: fixed; bottom: 120px; right: 25px; width: 320px; background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15); padding: 20px; z-index: 9998; animation: floatInTestimonial 0.8s ease-out, floatBob 3s ease-in-out infinite 0.8s; border-left: 4px solid #ff6f00; }
+        @keyframes floatInTestimonial { from { opacity: 0; transform: translateX(100px) scale(0.8); } to { opacity: 1; transform: translateX(0) scale(1); } }
+        @keyframes floatBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        .floating-testimonial-header { display: flex; align-items: center; margin-bottom: 12px; }
+        .floating-testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #1a237e, #3949ab); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.1em; margin-right: 12px; flex-shrink: 0; }
+        .floating-testimonial-info h4 { color: #1a237e; font-size: 0.95em; margin: 0; }
+        .floating-testimonial-info span { color: #888; font-size: 0.8em; }
+        .floating-testimonial-stars { color: #ffc107; font-size: 0.9em; margin-bottom: 8px; }
+        .floating-testimonial-text { font-size: 0.9em; color: #555; line-height: 1.5; font-style: italic; }
+        .floating-testimonial-close { position: absolute; top: 10px; right: 12px; background: none; border: none; color: #aaa; font-size: 1.2em; cursor: pointer; transition: color 0.2s; }
+        .floating-testimonial-close:hover { color: #ff6f00; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="2"/></svg>') repeat;
-            background-size: 100px 100px;
-        }
-
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        header p {
-            font-size: 1.3em;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #ff6f00;
-            color: white;
-            padding: 15px 40px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1em;
-            margin-top: 30px;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-button:hover {
-            background: #e65100;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(255,111,0,0.4);
-        }
-
-        /* Navigation */
-        nav {
-            background: #0d1642;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            padding: 5px 10px;
-        }
-
-        nav a:hover {
-            color: #ff6f00;
-        }
-
-        /* Sections */
-        section {
-            padding: 60px 0;
-        }
-
-        section:nth-child(even) {
-            background: white;
-        }
-
-        h2 {
-            font-size: 2.5em;
-            color: #1a237e;
-            margin-bottom: 30px;
-            text-align: center;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: #ff6f00;
-            border-radius: 2px;
-        }
-
-        h3 {
-            font-size: 1.8em;
-            color: #283593;
-            margin: 30px 0 15px;
-        }
-
-        p {
-            margin-bottom: 15px;
-            text-align: justify;
-            font-size: 1.05em;
-        }
-
-        /* Images */
-        .image-container {
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-        }
-
-        .image-caption {
-            font-style: italic;
-            color: #666;
-            margin-top: 10px;
-            font-size: 0.95em;
-        }
-
-        /* Cards */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 4px solid #ff6f00;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .card h3 {
-            font-size: 1.4em;
-            margin-top: 0;
-            color: #1a237e;
-        }
-
-        .card-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-        }
-
-        /* FAQ */
-        .faq-item {
-            background: white;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .faq-question {
-            background: #f5f5f5;
-            padding: 20px 25px;
-            cursor: pointer;
-            font-weight: bold;
-            color: #1a237e;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
-
-        .faq-question:hover {
-            background: #e8eaf6;
-        }
-
-        .faq-answer {
-            padding: 20px 25px;
-            display: none;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .faq-answer.active {
-            display: block;
-        }
-
-        /* Testimonials */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .testimonial {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            position: relative;
-        }
-
-        .testimonial::before {
-            content: '"';
-            font-size: 4em;
-            color: #ff6f00;
-            opacity: 0.3;
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            line-height: 1;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            padding-left: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            color: #1a237e;
-        }
-
-        .testimonial-company {
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .stars {
-            color: #ffc107;
-            margin-bottom: 10px;
-            font-size: 1.2em;
-        }
-
-        /* Highlight Box */
-        .highlight-box {
-            background: linear-gradient(135deg, #1a237e, #3949ab);
-            color: white;
-            padding: 50px;
-            border-radius: 20px;
-            text-align: center;
-            margin: 50px 0;
-        }
-
-        .highlight-box h3 {
-            color: white;
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        .highlight-box p {
-            text-align: center;
-            font-size: 1.1em;
-            margin-bottom: 25px;
-        }
-
-        .phone-number {
-            display: inline-block;
-            background: #ff6f00;
-            color: white;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-size: 1.5em;
-            font-weight: bold;
-            text-decoration: none;
-            margin-top: 10px;
-            transition: all 0.3s;
-        }
-
-        .phone-number:hover {
-            background: #e65100;
-            transform: scale(1.05);
-        }
-
-        /* Footer */
-        footer {
-            background: #0d1642;
-            color: white;
-            padding: 50px 0 20px;
-            text-align: center;
-        }
-
-        footer a {
-            color: #ff6f00;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            text-align: left;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h4 {
-            color: #ff6f00;
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section li {
-            margin-bottom: 8px;
-        }
-
-        .footer-section a {
-            color: #b0bec5;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
-            color: #90a4ae;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-            
-            h2 {
-                font-size: 1.8em;
-            }
-            
-            nav ul {
-                gap: 15px;
-                font-size: 0.9em;
-            }
-            
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* List styling */
-        ul.benefits-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        ul.benefits-list li {
-            padding: 10px 0 10px 35px;
-            position: relative;
-            font-size: 1.05em;
-        }
-
-        ul.benefits-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #ff6f00;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-
-        .two-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        @media (max-width: 768px) {
-            .two-columns {
-                grid-template-columns: 1fr;
-            }
-        }
+        /* FLOATING WHATSAPP BUTTON */
+        .floating-whatsapp { position: fixed; bottom: 25px; right: 25px; z-index: 9999; animation: whatsappPulse 2s infinite; }
+        .floating-whatsapp a { display: flex; align-items: center; justify-content: center; width: 65px; height: 65px; background: linear-gradient(135deg, #25d366, #128c7e); border-radius: 50%; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); text-decoration: none; transition: all 0.3s ease; position: relative; }
+        .floating-whatsapp a:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6); }
+        .floating-whatsapp svg { width: 34px; height: 34px; fill: white; }
+        .floating-whatsapp-tooltip { position: absolute; right: 75px; top: 50%; transform: translateY(-50%); background: #1a237e; color: white; padding: 10px 16px; border-radius: 10px; font-size: 0.85em; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .floating-whatsapp-tooltip::after { content: ''; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); border-width: 8px 0 8px 8px; border-style: solid; border-color: transparent transparent transparent #1a237e; }
+        .floating-whatsapp a:hover .floating-whatsapp-tooltip { opacity: 1; visibility: visible; right: 80px; }
+        @keyframes whatsappPulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        .floating-whatsapp a::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background: rgba(37, 211, 102, 0.3); animation: ripple 2s infinite; z-index: -1; }
+        @keyframes ripple { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.8); opacity: 0; } }
     </style>
+<base target="_blank">
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- FLOATING TESTIMONIAL WIDGET -->
+    <div class="floating-testimonial" id="floatingTestimonial">
+        <button class="floating-testimonial-close" onclick="closeTestimonial()">&times;</button>
+        <div class="floating-testimonial-header">
+            <div class="floating-testimonial-avatar">MR</div>
+            <div class="floating-testimonial-info">
+                <h4>Mariana Rocha</h4>
+                <span>Cliente Criosites</span>
+            </div>
+        </div>
+        <div class="floating-testimonial-stars">★★★★★</div>
+        <p class="floating-testimonial-text">"A Criosites transformou completamente nossa presenca digital! O site ficou incrivel e as vendas aumentaram 40% no primeiro mes. Super recomendo!"</p>
+    </div>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <div class="floating-whatsapp">
+        <a href="https://wa.me/5508005900348?text=Estou%20no%20site%20Criacao%20de%20Sites%20(Vercel)%20e%20gostaria%20de%20um%20orcamento!" target="_blank" rel="noopener noreferrer">
+            <span class="floating-whatsapp-tooltip">Fale conosco no WhatsApp!</span>
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+        </a>
+    </div>
+
     <header>
         <div class="container">
-            <h1>Criação de Sites em Campinas</h1>
-            <p>Transforme sua presença digital com sites profissionais, modernos e otimizados para resultados. Sua empresa merece o melhor em desenvolvimento web na região de Campinas.</p>
-            <a href="#contato" class="cta-button">Solicite um Orçamento Gratuito</a>
+            <h1>Criacao de Sites em Campinas</h1>
+            <p>Transforme sua presenca digital com sites profissionais, modernos e otimizados para resultados. Sua empresa merece o melhor em desenvolvimento web na regiao de Campinas.</p>
+            <a href="#contato" class="cta-button">Solicite um Orcamento Gratuito</a>
         </div>
     </header>
 
-    <!-- Navigation -->
     <nav>
         <div class="container">
             <ul>
                 <li><a href="#campinas">Sobre Campinas</a></li>
-                <li><a href="#criacao">Criação de Sites</a></li>
+                <li><a href="#criacao">Criacao de Sites</a></li>
                 <li><a href="#hospedagem">Hospedagem</a></li>
-                <li><a href="#criosites">Agência Criosites</a></li>
+                <li><a href="#criosites">Agencia Criosites</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#depoimentos">Depoimentos</a></li>
                 <li><a href="#contato">Contato</a></li>
@@ -478,476 +144,331 @@
         </div>
     </nav>
 
-    <!-- Sobre Campinas -->
     <section id="campinas">
         <div class="container">
-            <h2>Campinas: O Polo Tecnológico do Interior Paulista</h2>
-            
+            <h2>Campinas: O Polo Tecnologico do Interior Paulista</h2>
             <div class="two-columns">
                 <div>
-                    <p>Campinas, localizada no coração do estado de São Paulo, é uma das cidades mais importantes e dinâmicas do Brasil. Com uma população que ultrapassa 1,2 milhão de habitantes, a cidade se consolidou como um verdadeiro polo tecnológico e econômico do interior paulista, abrigando importantes centros de pesquisa, universidades renomadas e um ecossistema vibrante de startups e empresas de tecnologia.</p>
-                    
-                    <p>A cidade é sede da <strong>Unicamp (Universidade Estadual de Campinas)</strong>, uma das melhores universidades da América Latina, que forma anualmente milhares de profissionais qualificados nas áreas de tecnologia, engenharia e ciências exatas. Essa concentração de talentos transformou Campinas em um celeiro de inovação, atraindo grandes empresas do setor de tecnologia e impulsionando o desenvolvimento de soluções digitais de ponta.</p>
-                    
-                    <p>O <strong>Parque Tecnológico de Campinas</strong>, um dos maiores e mais importantes do Brasil, abriga centenas de empresas de base tecnológica, desde startups promissoras até gigantes multinacionais. Esse ambiente favorável à inovação cria um cenário ideal para o desenvolvimento de projetos digitais, incluindo a criação de sites profissionais e soluções web avançadas.</p>
+                    <p>Campinas, localizada no coracao do estado de Sao Paulo, e uma das cidades mais importantes e dinamicas do Brasil. Com uma populacao que ultrapassa 1,2 milhao de habitantes, a cidade se consolidou como um verdadeiro polo tecnologico e economico do interior paulista, abrigando importantes centros de pesquisa, universidades renomadas e um ecossistema vibrante de startups e empresas de tecnologia.</p>
+                    <p>A cidade e sede da <strong>Unicamp (Universidade Estadual de Campinas)</strong>, uma das melhores universidades da America Latina, que forma anualmente milhares de profissionais qualificados nas areas de tecnologia, engenharia e ciencias exatas. Essa concentracao de talentos transformou Campinas em um celeiro de inovacao, atraindo grandes empresas do setor de tecnologia e impulsionando o desenvolvimento de solucoes digitais de ponta.</p>
+                    <p>O <strong>Parque Tecnologico de Campinas</strong>, um dos maiores e mais importantes do Brasil, abriga centenas de empresas de base tecnologica, desde startups promissoras ate gigantes multinacionais. Esse ambiente favoravel a inovacao cria um cenario ideal para o desenvolvimento de projetos digitais, incluindo a criacao de sites profissionais e solucoes web avancadas.</p>
                 </div>
                 <div class="image-container">
-                    <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/475ae7791b54e0f3cb608b6b21fea96595fc1fde.jpg" alt="Skyline de Campinas" style="max-height: 400px; object-fit: cover;">
-                    <p class="image-caption">Skyline da cidade de Campinas - Centro de inovação tecnológica</p>
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/475ae7791b54e0f3cb608b6b21fea96595fc1fde.jpg" alt="Skyline de Campinas - Centro de inovacao tecnologica" style="max-height: 400px; object-fit: cover;">
+                    <p class="image-caption">Skyline da cidade de Campinas - Centro de inovacao tecnologica</p>
                 </div>
             </div>
-
-            <p>Além do forte setor tecnológico, Campinas possui uma economia diversificada e robusta. A cidade abriga importantes indústrias dos setores automotivo, farmacêutico, alimentício e de serviços. O <strong>Distrito Industrial de Campinas</strong> é um dos maiores da América Latina, concentrando milhares de empresas que geram emprego e renda para toda a região. Essa diversidade econômica cria uma demanda constante por soluções digitais, desde sites institucionais para pequenas empresas até complexas plataformas de e-commerce para grandes corporações.</p>
-
-            <p>A infraestrutura de Campinas também merece destaque. O aeroporto internacional <strong>Viracopos</strong>, localizado na região metropolitana, é um dos principais hubs de carga do Brasil e conecta a cidade ao mundo inteiro. A excelente malha viária, com acesso às principais rodovias do estado, facilita a logística e o comércio, tornando Campinas um ponto estratégico para negócios.</p>
-
-            <p>A qualidade de vida em Campinas é outro fator que atrai profissionais e empresas. A cidade conta com excelentes hospitais, centros culturais, parques e áreas de lazer. O <strong>Parque Portugal</strong>, popularmente conhecido como Lagoa do Taquaral, é um dos cartões-postais da cidade e oferece opções de lazer para toda a família. Essa combinação de desenvolvimento econômico, infraestrutura de qualidade e qualidade de vida faz de Campinas um ambiente propício para o crescimento de negócios digitais.</p>
-
-            <p>Para empresas que buscam <strong>criação de sites em Campinas</strong>, a cidade oferece um mercado maduro e competitivo, com agências especializadas que dominam as últimas tendências em design, desenvolvimento e marketing digital. A proximidade com centros de pesquisa e a presença de profissionais altamente qualificados garantem que os projetos desenvolvidos na região atendam aos mais altos padrões de qualidade e inovação.</p>
+            <p>Alem do forte setor tecnologico, Campinas possui uma economia diversificada e robusta. A cidade abriga importantes industrias dos setores automotivo, farmaceutico, alimenticio e de servicos. O <strong>Distrito Industrial de Campinas</strong> e um dos maiores da America Latina, concentrando milhares de empresas que geram emprego e renda para toda a regiao. Essa diversidade economica cria uma demanda constante por solucoes digitais, desde sites institucionais para pequenas empresas ate complexas plataformas de e-commerce para grandes corporacoes.</p>
+            <p>A infraestrutura de Campinas tambem merece destaque. O aeroporto internacional <strong>Viracopos</strong>, localizado na regiao metropolitana, e um dos principais hubs de carga do Brasil e conecta a cidade ao mundo inteiro. A excelente malha viaria, com acesso as principais rodovias do estado, facilita a logistica e o comercio, tornando Campinas um ponto estrategico para negocios.</p>
+            <p>A qualidade de vida em Campinas e outro fator que atrai profissionais e empresas. A cidade conta com excelentes hospitais, centros culturais, parques e areas de lazer. O <strong>Parque Portugal</strong>, popularmente conhecido como Lagoa do Taquaral, e um dos cartoes-postais da cidade e oferece opcoes de lazer para toda a familia. Essa combinacao de desenvolvimento economico, infraestrutura de qualidade e qualidade de vida faz de Campinas um ambiente propicio para o crescimento de negocios digitais.</p>
+            <p>Para empresas que buscam <strong>criacao de sites em Campinas</strong>, a cidade oferece um mercado maduro e competitivo, com agencias especializadas que dominam as ultimas tendencias em design, desenvolvimento e marketing digital. A proximidade com centros de pesquisa e a presenca de profissionais altamente qualificados garantem que os projetos desenvolvidos na regiao atendam aos mais altos padroes de qualidade e inovacao.</p>
         </div>
     </section>
 
-    <!-- Criação de Sites -->
     <section id="criacao" style="background: white;">
         <div class="container">
-            <h2>Criação de Sites Profissionais em Campinas</h2>
-            
-            <p>A <strong>criação de sites</strong> é hoje uma necessidade fundamental para qualquer empresa que deseja se manter competitiva no mercado atual. Em Campinas, onde a economia é dinâmica e a concorrência é acirrada, ter um site profissional não é mais um diferencial, mas sim um requisito básico para o sucesso dos negócios. Um site bem desenvolvido funciona como a vitrine digital da sua empresa, estando disponível 24 horas por dia, 7 dias por semana, para receber visitantes de qualquer lugar do mundo.</p>
-
+            <h2>Criacao de Sites Profissionais em Campinas</h2>
+            <p>A <strong>criacao de sites</strong> e hoje uma necessidade fundamental para qualquer empresa que deseja se manter competitiva no mercado atual. Em Campinas, onde a economia e dinamica e a concorrencia e acirrada, ter um site profissional nao e mais um diferencial, mas sim um requisito basico para o sucesso dos negocios. Um site bem desenvolvido funciona como a vitrine digital da sua empresa, estando disponivel 24 horas por dia, 7 dias por semana, para receber visitantes de qualquer lugar do mundo.</p>
             <div class="image-container">
-                <img src="https://kimi-web-img.moonshot.cn/img/prefacestudios.s3.eu-west-2.amazonaws.com/a43a9429ea175ca3c87fdc6fcb68a93e65eb9f8c.png" alt="Processo de criação de sites" style="max-height: 500px;">
+                <img src="https://kimi-web-img.moonshot.cn/img/prefacestudios.s3.eu-west-2.amazonaws.com/a43a9429ea175ca3c87fdc6fcb68a93e65eb9f8c.png" alt="Processo de criacao de sites" style="max-height: 500px;">
                 <p class="image-caption">O processo completo de desenvolvimento de um site profissional</p>
             </div>
-
             <h3>Por que Investir em um Site Profissional?</h3>
-            
-            <p>Investir na <strong>criação de sites</strong> é investir no futuro do seu negócio. Um site profissional oferece inúmeras vantagens que vão muito além da simples presença online. Primeiramente, um site transmite credibilidade e profissionalismo. Quando um potencial cliente pesquisa sobre sua empresa na internet e encontra um site bem estruturado, com design moderno e informações claras, a confiança na sua marca aumenta significativamente.</p>
-
-            <p>Além disso, um site otimizado para mecanismos de busca (SEO) pode atrair visitantes qualificados de forma orgânica, reduzindo os custos com publicidade paga. Com estratégias de SEO bem implementadas, sua empresa pode aparecer nos primeiros resultados do Google quando alguém buscar por produtos ou serviços relacionados ao seu negócio em Campinas e região.</p>
-
+            <p>Investir na <strong>criacao de sites</strong> e investir no futuro do seu negocio. Um site profissional oferece inumeras vantagens que vao muito alem da simples presenca online. Primeiramente, um site transmite credibilidade e profissionalismo. Quando um potencial cliente pesquisa sobre sua empresa na internet e encontra um site bem estruturado, com design moderno e informacoes claras, a confianca na sua marca aumenta significativamente.</p>
+            <p>Alem disso, um site otimizado para mecanismos de busca (SEO) pode atrair visitantes qualificados de forma organica, reduzindo os custos com publicidade paga. Com estrategias de SEO bem implementadas, sua empresa pode aparecer nos primeiros resultados do Google quando alguem buscar por produtos ou servicos relacionados ao seu negocio em Campinas e regiao.</p>
             <div class="cards-grid">
-                <div class="card">
-                    <div class="card-icon">🎨</div>
-                    <h3>Design Responsivo</h3>
-                    <p>Seu site adaptado perfeitamente para desktops, tablets e smartphones. Mais de 70% dos acessos à internet no Brasil são feitos por dispositivos móveis, tornando o design responsivo indispensável.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">⚡</div>
-                    <h3>Alta Performance</h3>
-                    <p>Sites rápidos e otimizados que carregam em poucos segundos. A velocidade de carregamento é um fator crucial tanto para a experiência do usuário quanto para o ranqueamento no Google.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🔍</div>
-                    <h3>SEO Otimizado</h3>
-                    <p>Estrutura técnica e conteúdo otimizados para aparecer nos primeiros resultados de busca. Implementamos as melhores práticas de SEO desde a fundação do site.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🛡️</div>
-                    <h3>Segurança</h3>
-                    <p>Certificado SSL, proteção contra ataques e backups regulares. A segurança do seu site e dos dados dos seus clientes é nossa prioridade absoluta.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">📊</div>
-                    <h3>Analytics Integrado</h3>
-                    <p>Acompanhamento detalhado do comportamento dos visitantes. Saiba de onde vêm seus clientes, quais páginas mais acessam e como otimizar suas conversões.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🔄</div>
-                    <h3>Fácil Atualização</h3>
-                    <p>Sites desenvolvidos com CMS intuitivo que permite você mesmo atualizar conteúdos, imagens e informações sem depender de um programador.</p>
-                </div>
+                <div class="card"><div class="card-icon">&#127912;</div><h3>Design Responsivo</h3><p>Seu site adaptado perfeitamente para desktops, tablets e smartphones. Mais de 70% dos acessos a internet no Brasil sao feitos por dispositivos moveis, tornando o design responsivo indispensavel.</p></div>
+                <div class="card"><div class="card-icon">&#9889;</div><h3>Alta Performance</h3><p>Sites rapidos e otimizados que carregam em poucos segundos. A velocidade de carregamento e um fator crucial tanto para a experiencia do usuario quanto para o ranqueamento no Google.</p></div>
+                <div class="card"><div class="card-icon">&#128269;</div><h3>SEO Otimizado</h3><p>Estrutura tecnica e conteudo otimizados para aparecer nos primeiros resultados de busca. Implementamos as melhores praticas de SEO desde a fundacao do site.</p></div>
+                <div class="card"><div class="card-icon">&#128737;</div><h3>Seguranca</h3><p>Certificado SSL, protecao contra ataques e backups regulares. A seguranca do seu site e dos dados dos seus clientes e nossa prioridade absoluta.</p></div>
+                <div class="card"><div class="card-icon">&#128202;</div><h3>Analytics Integrado</h3><p>Acompanhamento detalhado do comportamento dos visitantes. Saiba de onde vem seus clientes, quais paginas mais acessam e como otimizar suas conversoes.</p></div>
+                <div class="card"><div class="card-icon">&#128260;</div><h3>Facil Atualizacao</h3><p>Sites desenvolvidos com CMS intuitivo que permite voce mesmo atualizar conteudos, imagens e informacoes sem depender de um programador.</p></div>
             </div>
-
             <h3>Tipos de Sites que Desenvolvemos</h3>
-
-            <p>A <strong>criação de sites em Campinas</strong> abrange uma variedade de tipos e modelos, cada um adequado a objetivos específicos de negócio. Entendemos que cada empresa é única e, por isso, oferecemos soluções personalizadas que atendem às necessidades específicas de cada cliente.</p>
-
-            <p><strong>Sites Institucionais:</strong> São sites que apresentam a empresa, seus serviços, história, equipe e formas de contato. Ideais para empresas que desejam estabelecer uma presença digital profissional e transmitir credibilidade ao mercado. Um site institucional bem feito conta a história da sua marca e cria uma conexão emocional com os visitantes.</p>
-
-            <p><strong>Lojas Virtuais (E-commerce):</strong> Com o crescimento exponencial do comércio eletrônico no Brasil, ter uma loja virtual se tornou essencial para varejistas de todos os portes. Desenvolvemos lojas virtuais completas, com carrinho de compras, integração com gateways de pagamento, controle de estoque, área do cliente e todas as funcionalidades necessárias para vender online com segurança e eficiência.</p>
-
+            <p>A <strong>criacao de sites em Campinas</strong> abrange uma variedade de tipos e modelos, cada um adequado a objetivos especificos de negocio. Entendemos que cada empresa e unica e, por isso, oferecemos solucoes personalizadas que atendem as necessidades especificas de cada cliente.</p>
+            <p><strong>Sites Institucionais:</strong> Sao sites que apresentam a empresa, seus servicos, historia, equipe e formas de contato. Ideais para empresas que desejam estabelecer uma presenca digital profissional e transmitir credibilidade ao mercado. Um site institucional bem feito conta a historia da sua marca e cria uma conexao emocional com os visitantes.</p>
+            <p><strong>Lojas Virtuais (E-commerce):</strong> Com o crescimento exponencial do comercio eletronico no Brasil, ter uma loja virtual se tornou essencial para varejistas de todos os portes. Desenvolvemos lojas virtuais completas, com carrinho de compras, integracao com gateways de pagamento, controle de estoque, area do cliente e todas as funcionalidades necessarias para vender online com seguranca e eficiencia.</p>
             <div class="image-container">
-                <img src="https://kimi-web-img.moonshot.cn/img/cdn.searchenginejournal.com/2b554e41946d82f50981f0f56b85a1a280cd85f8.png" alt="Design responsivo em múltiplos dispositivos" style="max-height: 400px;">
+                <img src="https://kimi-web-img.moonshot.cn/img/cdn.searchenginejournal.com/2b554e41946d82f50981f0f56b85a1a280cd85f8.png" alt="Design responsivo em multiplos dispositivos" style="max-height: 400px;">
                 <p class="image-caption">Sites responsivos que funcionam perfeitamente em qualquer dispositivo</p>
             </div>
-
-            <p><strong>Sites One Page:</strong> Modelo ideal para campanhas específicas, eventos ou empresas que desejam um site objetivo e direto. Todo o conteúdo é apresentado em uma única página, com navegação por âncoras, proporcionando uma experiência fluida e envolvente ao usuário.</p>
-
-            <p><strong>Blogs e Portais de Conteúdo:</strong> Perfeitos para empresas que trabalham com marketing de conteúdo e desejam posicionar-se como autoridade em seu nicho de mercado. Desenvolvemos blogs com excelente usabilidade, otimizados para SEO e integrados com redes sociais.</p>
-
-            <p><strong>Sistemas Web e Aplicativos:</strong> Para necessidades mais complexas, desenvolvemos sistemas web personalizados, intranets, extranets e aplicações web que automatizam processos e aumentam a produtividade da sua empresa.</p>
-
-            <h3>O Processo de Criação de Sites</h3>
-
-            <p>O processo de <strong>criação de sites</strong> envolve várias etapas interdependentes que garantem o sucesso do projeto. Cada fase é executada com atenção aos detalhes e foco nos objetivos do cliente.</p>
-
-            <p><strong>1. Briefing e Planejamento:</strong> A primeira etapa consiste em entender profundamente o negócio do cliente, seus objetivos, público-alvo, concorrentes e diferenciais. Realizamos uma análise detalhada para definir a arquitetura da informação, o mapa do site e as funcionalidades necessárias.</p>
-
-            <p><strong>2. Design e Prototipação:</strong> Com base no briefing, nossa equipe de design cria wireframes e protótipos visuais que definem a aparência e a experiência do usuário do site. Trabalhamos com conceitos modernos, focados em usabilidade e conversão.</p>
-
+            <p><strong>Sites One Page:</strong> Modelo ideal para campanhas especificas, eventos ou empresas que desejam um site objetivo e direto. Todo o conteudo e apresentado em uma unica pagina, com navegacao por ancoras, proporcionando uma experiencia fluida e envolvente ao usuario.</p>
+            <p><strong>Blogs e Portais de Conteudo:</strong> Perfeitos para empresas que trabalham com marketing de conteudo e desejam posicionar-se como autoridade em seu nicho de mercado. Desenvolvemos blogs com excelente usabilidade, otimizados para SEO e integrados com redes sociais.</p>
+            <p><strong>Sistemas Web e Aplicativos:</strong> Para necessidades mais complexas, desenvolvemos sistemas web personalizados, intranets, extranets e aplicacoes web que automatizam processos e aumentam a produtividade da sua empresa.</p>
+            <h3>O Processo de Criacao de Sites</h3>
+            <p>O processo de <strong>criacao de sites</strong> envolve varias etapas interdependentes que garantem o sucesso do projeto. Cada fase e executada com atencao aos detalhes e foco nos objetivos do cliente.</p>
+            <p><strong>1. Briefing e Planejamento:</strong> A primeira etapa consiste em entender profundamente o negocio do cliente, seus objetivos, publico-alvo, concorrentes e diferenciais. Realizamos uma analise detalhada para definir a arquitetura da informacao, o mapa do site e as funcionalidades necessarias.</p>
+            <p><strong>2. Design e Prototipacao:</strong> Com base no briefing, nossa equipe de design cria wireframes e prototipos visuais que definem a aparencia e a experiencia do usuario do site. Trabalhamos com conceitos modernos, focados em usabilidade e conversao.</p>
             <div class="image-container">
                 <img src="https://kimi-web-img.moonshot.cn/img/www.newperspectivestudio.co.za/c441561c1d2fbc999799f8d84de07ba94e45cfec.png" alt="Etapas do processo de web design" style="max-height: 350px;">
                 <p class="image-caption">As principais etapas do processo de desenvolvimento web</p>
             </div>
-
-            <p><strong>3. Desenvolvimento:</strong> Após aprovação do design, iniciamos a programação do site. Utilizamos as tecnologias mais modernas e adequadas para cada projeto, garantindo performance, segurança e escalabilidade.</p>
-
-            <p><strong>4. Conteúdo:</strong> O conteúdo é rei na internet. Auxiliamos na criação e otimização de textos, imagens e vídeos que comunicam a mensagem da sua empresa de forma clara e persuasiva, sempre com foco em SEO.</p>
-
-            <p><strong>5. Testes e Validação:</strong> Antes do lançamento, realizamos testes rigorosos em diferentes navegadores, dispositivos e condições de rede. Verificamos funcionalidades, links, formulários, velocidade de carregamento e compatibilidade.</p>
-
-            <p><strong>6. Lançamento e Acompanhamento:</strong> Com tudo validado, realizamos o lançamento do site e monitoramos seus primeiros dias de vida. Oferecemos treinamento para que o cliente possa gerenciar o conteúdo e acompanhamos métricas de desempenho.</p>
-
+            <p><strong>3. Desenvolvimento:</strong> Apos aprovacao do design, iniciamos a programacao do site. Utilizamos as tecnologias mais modernas e adequadas para cada projeto, garantindo performance, seguranca e escalabilidade.</p>
+            <p><strong>4. Conteudo:</strong> O conteudo e rei na internet. Auxiliamos na criacao e otimizacao de textos, imagens e videos que comunicam a mensagem da sua empresa de forma clara e persuasiva, sempre com foco em SEO.</p>
+            <p><strong>5. Testes e Validacao:</strong> Antes do lancamento, realizamos testes rigorosos em diferentes navegadores, dispositivos e condicoes de rede. Verificamos funcionalidades, links, formularios, velocidade de carregamento e compatibilidade.</p>
+            <p><strong>6. Lancamento e Acompanhamento:</strong> Com tudo validado, realizamos o lancamento do site e monitoramos seus primeiros dias de vida. Oferecemos treinamento para que o cliente possa gerenciar o conteudo e acompanhamos metricas de desempenho.</p>
             <h3>Tecnologias Utilizadas</h3>
-
-            <p>Na <strong>criação de sites em Campinas</strong>, utilizamos um stack tecnológico moderno e robusto que garante a qualidade e a durabilidade dos projetos. Trabalhamos com HTML5, CSS3 e JavaScript para o front-end, garantindo interfaces ricas e interativas. Para o back-end, utilizamos PHP, Node.js e Python, dependendo das necessidades específicas de cada projeto.</p>
-
-            <p>Para sites com gerenciamento de conteúdo, somos especialistas em WordPress, a plataforma mais utilizada no mundo, que oferece flexibilidade, segurança e facilidade de uso. Também trabalhamos com outras plataformas como Shopify, Magento e WooCommerce para projetos de e-commerce.</p>
+            <p>Na <strong>criacao de sites em Campinas</strong>, utilizamos um stack tecnologico moderno e robusto que garante a qualidade e a durabilidade dos projetos. Trabalhamos com HTML5, CSS3 e JavaScript para o front-end, garantindo interfaces ricas e interativas. Para o back-end, utilizamos PHP, Node.js e Python, dependendo das necessidades especificas de cada projeto.</p>
+            <p>Para sites com gerenciamento de conteudo, somos especialistas em WordPress, a plataforma mais utilizada no mundo, que oferece flexibilidade, seguranca e facilidade de uso. Tambem trabalhamos com outras plataformas como Shopify, Magento e WooCommerce para projetos de e-commerce.</p>
         </div>
     </section>
 
-    <!-- Hospedagem de Sites -->
     <section id="hospedagem">
         <div class="container">
-            <h2>Hospedagem de Sites: A Base da Sua Presença Online</h2>
-
+            <h2>Hospedagem de Sites: A Base da Sua Presenca Online</h2>
             <div class="two-columns">
                 <div>
-                    <p>A <strong>hospedagem de sites</strong> é um dos pilares fundamentais para qualquer projeto digital. Independentemente de quão bem desenvolvido seja o seu site, se a hospedagem for deficiente, toda a experiência do usuário será comprometida. A hospedagem é o serviço que armazena os arquivos do seu site em servidores conectados à internet 24 horas por dia, garantindo que seu site esteja sempre acessível aos visitantes.</p>
-
-                    <p>Escolher a hospedagem correta é uma decisão estratégica que impacta diretamente na performance, segurança e disponibilidade do seu site. Uma hospedagem de qualidade garante que seu site carregue rapidamente, esteja protegido contra ameaças e permaneça online mesmo durante picos de acesso.</p>
-
-                    <p>Em Campinas, onde a concorrência digital é intensa, ter uma hospedagem confiável pode ser a diferença entre conquistar ou perder um cliente. Pesquisas mostram que 53% dos usuários abandonam um site se ele demorar mais de 3 segundos para carregar. Por isso, investir em uma hospedagem de qualidade não é um custo, mas sim um investimento no sucesso do seu negócio.</p>
+                    <p>A <strong>hospedagem de sites</strong> e um dos pilares fundamentais para qualquer projeto digital. Independentemente de quao bem desenvolvido seja o seu site, se a hospedagem for deficiente, toda a experiencia do usuario sera comprometida. A hospedagem e o servico que armazena os arquivos do seu site em servidores conectados a internet 24 horas por dia, garantindo que seu site esteja sempre acessivel aos visitantes.</p>
+                    <p>Escolher a hospedagem correta e uma decisao estrategica que impacta diretamente na performance, seguranca e disponibilidade do seu site. Uma hospedagem de qualidade garante que seu site carregue rapidamente, esteja protegido contra ameacas e permaneca online mesmo durante picos de acesso.</p>
+                    <p>Em Campinas, onde a concorrencia digital e intensa, ter uma hospedagem confiavel pode ser a diferenca entre conquistar ou perder um cliente. Pesquisas mostram que 53% dos usuarios abandonam um site se ele demorar mais de 3 segundos para carregar. Por isso, investir em uma hospedagem de qualidade nao e um custo, mas sim um investimento no sucesso do seu negocio.</p>
                 </div>
                 <div class="image-container">
                     <img src="https://kimi-web-img.moonshot.cn/img/www.resellerclub.com/2278d7a8357629a6743e945e09e3573e4e612636.png" alt="Servidores de hospedagem web" style="max-height: 400px;">
                     <p class="image-caption">Infraestrutura de servidores para hospedagem de sites</p>
                 </div>
             </div>
-
             <h3>Tipos de Hospedagem de Sites</h3>
-
-            <p>Existem diferentes tipos de <strong>hospedagem de sites</strong>, cada um adequado a necessidades e orçamentos específicos. Conhecer as opções disponíveis ajuda a tomar a melhor decisão para o seu projeto.</p>
-
-            <p><strong>Hospedagem Compartilhada (Shared Hosting):</strong> É o tipo mais comum e econômico de hospedagem. Nesse modelo, vários sites compartilham os recursos de um mesmo servidor. É ideal para sites pequenos e médios, blogs e sites institucionais com tráfego moderado. Oferece excelente custo-benefício para quem está começando.</p>
-
-            <p><strong>Hospedagem VPS (Virtual Private Server):</strong> Nesse modelo, o servidor é dividido em máquinas virtuais independentes, oferecendo mais recursos dedicados e maior controle sobre o ambiente. É indicado para sites com tráfego médio a alto, lojas virtuais em crescimento e aplicações que exigem mais poder de processamento.</p>
-
-            <p><strong>Hospedagem Dedicada:</strong> O cliente tem um servidor físico inteiro dedicado exclusivamente ao seu site. Oferece máxima performance, segurança e controle. É a solução ideal para grandes portais, aplicações críticas e empresas que precisam de total controle sobre sua infraestrutura.</p>
-
-            <p><strong>Hospedagem em Nuvem (Cloud Hosting):</strong> Utiliza uma rede de servidores interconectados, oferecendo alta escalabilidade e redundância. Se um servidor falha, outro assume automaticamente. É perfeito para sites que precisam de alta disponibilidade e capacidade de crescer rapidamente.</p>
-
+            <p>Existem diferentes tipos de <strong>hospedagem de sites</strong>, cada um adequado a necessidades e orcamentos especificos. Conhecer as opcoes disponiveis ajuda a tomar a melhor decisao para o seu projeto.</p>
+            <p><strong>Hospedagem Compartilhada (Shared Hosting):</strong> E o tipo mais comum e economico de hospedagem. Nesse modelo, varios sites compartilham os recursos de um mesmo servidor. E ideal para sites pequenos e medios, blogs e sites institucionais com trafego moderado. Oferece excelente custo-beneficio para quem esta comecando.</p>
+            <p><strong>Hospedagem VPS (Virtual Private Server):</strong> Nesse modelo, o servidor e dividido em maquinas virtuais independentes, oferecendo mais recursos dedicados e maior controle sobre o ambiente. E indicado para sites com trafego medio a alto, lojas virtuais em crescimento e aplicacoes que exigem mais poder de processamento.</p>
+            <p><strong>Hospedagem Dedicada:</strong> O cliente tem um servidor fisico inteiro dedicado exclusivamente ao seu site. Oferece maxima performance, seguranca e controle. E a solucao ideal para grandes portais, aplicacoes criticas e empresas que precisam de total controle sobre sua infraestrutura.</p>
+            <p><strong>Hospedagem em Nuvem (Cloud Hosting):</strong> Utiliza uma rede de servidores interconectados, oferecendo alta escalabilidade e redundancia. Se um servidor falha, outro assume automaticamente. E perfeito para sites que precisam de alta disponibilidade e capacidade de crescer rapidamente.</p>
             <div class="image-container">
-                <img src="https://kimi-web-img.moonshot.cn/img/www.atlantic.net/e1ff44adf5f55cd9fa114d30176b9b53e4cdc6f8.webp" alt="Benefícios da hospedagem web" style="max-height: 400px;">
-                <p class="image-caption">Principais benefícios de uma hospedagem de sites profissional</p>
+                <img src="https://kimi-web-img.moonshot.cn/img/www.atlantic.net/e1ff44adf5f55cd9fa114d30176b9b53e4cdc6f8.webp" alt="Beneficios da hospedagem web" style="max-height: 400px;">
+                <p class="image-caption">Principais beneficios de uma hospedagem de sites profissional</p>
             </div>
-
             <h3>O que Procurar em uma Hospedagem de Qualidade?</h3>
-
-            <p>Ao escolher um serviço de <strong>hospedagem de sites</strong>, é importante avaliar diversos fatores que impactam diretamente na qualidade do serviço:</p>
-
+            <p>Ao escolher um servico de <strong>hospedagem de sites</strong>, e importante avaliar diversos fatores que impactam diretamente na qualidade do servico:</p>
             <ul class="benefits-list">
-                <li><strong>Uptime Garantido:</strong> Procure por hospedagens que ofereçam garantia de uptime de pelo menos 99,9%. Isso significa que seu site estará disponível quase o tempo todo.</li>
-                <li><strong>Velocidade e Performance:</strong> Servidores com SSD, cache avançado e localização estratégica dos data centers garantem carregamento rápido das páginas.</li>
-                <li><strong>Certificado SSL Gratuito:</strong> Essencial para a segurança do site e para o ranqueamento no Google. Sites sem SSL são marcados como "não seguros" pelos navegadores.</li>
-                <li><strong>Suporte Técnico 24/7:</strong> Problemas podem acontecer a qualquer momento. Ter suporte técnico disponível 24 horas por dia, 7 dias por semana, é fundamental.</li>
-                <li><strong>Backups Automáticos:</strong> Backups regulares e automáticos protegem seu site contra perda de dados por falhas humanas, ataques ou problemas técnicos.</li>
-                <li><strong>Proteção contra Malware e DDoS:</strong> Firewalls, scanners de malware e proteção contra ataques DDoS mantêm seu site seguro.</li>
-                <li><strong>Escalabilidade:</strong> A hospedagem deve permitir que você aumente recursos conforme seu site cresce, sem necessidade de migração complexa.</li>
-                <li><strong>Facilidade de Uso:</strong> Painel de controle intuitivo, instalação de aplicativos com um clique e ferramentas de gerenciamento simplificadas.</li>
+                <li><strong>Uptime Garantido:</strong> Procure por hospedagens que oferecam garantia de uptime de pelo menos 99,9%. Isso significa que seu site estara disponivel quase o tempo todo.</li>
+                <li><strong>Velocidade e Performance:</strong> Servidores com SSD, cache avancado e localizacao estrategica dos data centers garantem carregamento rapido das paginas.</li>
+                <li><strong>Certificado SSL Gratuito:</strong> Essencial para a seguranca do site e para o ranqueamento no Google. Sites sem SSL sao marcados como "nao seguros" pelos navegadores.</li>
+                <li><strong>Suporte Tecnico 24/7:</strong> Problemas podem acontecer a qualquer momento. Ter suporte tecnico disponivel 24 horas por dia, 7 dias por semana, e fundamental.</li>
+                <li><strong>Backups Automaticos:</strong> Backups regulares e automaticos protegem seu site contra perda de dados por falhas humanas, ataques ou problemas tecnicos.</li>
+                <li><strong>Protecao contra Malware e DDoS:</strong> Firewalls, scanners de malware e protecao contra ataques DDoS mantem seu site seguro.</li>
+                <li><strong>Escalabilidade:</strong> A hospedagem deve permitir que voce aumente recursos conforme seu site cresce, sem necessidade de migracao complexa.</li>
+                <li><strong>Facilidade de Uso:</strong> Painel de controle intuitivo, instalacao de aplicativos com um clique e ferramentas de gerenciamento simplificadas.</li>
             </ul>
-
             <h3>Hospedagem com Foco em SEO</h3>
-
-            <p>A <strong>hospedagem de sites</strong> também influencia diretamente no SEO (Otimização para Mecanismos de Busca). O Google considera a velocidade de carregamento como um fator de ranqueamento, e servidores lentos podem prejudicar a posição do seu site nos resultados de busca. Além disso, a localização do servidor pode impactar na velocidade para usuários de determinadas regiões.</p>
-
-            <p>Uma hospedagem otimizada para SEO deve oferecer servidores rápidos, certificado SSL, suporte a HTTP/2 e IPv6, além de garantir que o IP do servidor não esteja em listas negras por spam. Todos esses fatores contribuem para que seu site tenha melhor performance nos mecanismos de busca.</p>
-
-            <h3>Migração de Hospedagem</h3>
-
-            <p>Muitas empresas já possuem sites hospedados, mas desejam migrar para uma hospedagem melhor. O processo de migração de <strong>hospedagem de sites</strong> deve ser realizado com cuidado para evitar perda de dados e tempo de indisponibilidade. Uma migração bem planejada envolve backup completo, transferência dos arquivos e banco de dados, configuração do novo ambiente, testes e apontamento do domínio, tudo de forma a minimizar o impacto no funcionamento do site.</p>
+            <p>A <strong>hospedagem de sites</strong> tambem influencia diretamente no SEO (Otimizacao para Mecanismos de Busca). O Google considera a velocidade de carregamento como um fator de ranqueamento, e servidores lentos podem prejudicar a posicao do seu site nos resultados de busca. Alem disso, a localizacao do servidor pode impactar na velocidade para usuarios de determinadas regioes.</p>
+            <p>Uma hospedagem otimizada para SEO deve oferecer servidores rapidos, certificado SSL, suporte a HTTP/2 e IPv6, alem de garantir que o IP do servidor nao esteja em listas negras por spam. Todos esses fatores contribuem para que seu site tenha melhor performance nos mecanismos de busca.</p>
+            <h3>Migracao de Hospedagem</h3>
+            <p>Muitas empresas ja possuem sites hospedados, mas desejam migrar para uma hospedagem melhor. O processo de migracao de <strong>hospedagem de sites</strong> deve ser realizado com cuidado para evitar perda de dados e tempo de indisponibilidade. Uma migracao bem planejada envolve backup completo, transferencia dos arquivos e banco de dados, configuracao do novo ambiente, testes e apontamento do dominio, tudo de forma a minimizar o impacto no funcionamento do site.</p>
         </div>
     </section>
 
-    <!-- Agência Criosites -->
     <section id="criosites" style="background: white;">
         <div class="container">
-            <h2>Conheça a Agência Criosites</h2>
-
+            <h2>Conheca a Agencia Criosites</h2>
             <div class="two-columns">
                 <div>
-                    <p>A <a href="https://criosites.com.br/" target="_blank" style="color: #ff6f00; font-weight: bold; text-decoration: none;">Criação Sites Campinas</a> é realizada com excelência pela <strong>Agência Criosites</strong>, referência em desenvolvimento web na região de Campinas e todo o estado de São Paulo. Com anos de experiência no mercado digital, a Criosites se consolidou como uma das principais agências de criação de sites, oferecendo soluções completas e personalizadas para empresas de todos os portes e segmentos.</p>
-
-                    <p>A Criosites nasceu da paixão por tecnologia e do desejo de ajudar empresas a alcançarem seu potencial máximo no ambiente digital. Ao longo dos anos, a agência desenvolveu centenas de projetos, desde sites institucionais elegantes até complexas plataformas de e-commerce, sempre com foco em resultados e na satisfação total dos clientes.</p>
-
-                    <p>O diferencial da Criosites está na combinação de criatividade, tecnologia de ponta e um atendimento próximo e personalizado. Cada projeto é tratado como único, com dedicação exclusiva da equipe para entender as necessidades específicas do cliente e entregar uma solução que supera as expectativas.</p>
+                    <p>A <a href="https://criosites.com.br/" target="_blank" style="color: #ff6f00; font-weight: bold; text-decoration: none;">Criacao Sites Campinas</a> e realizada com excelencia pela <strong>Agencia Criosites</strong>, referencia em desenvolvimento web na regiao de Campinas e todo o estado de Sao Paulo. Com anos de experiencia no mercado digital, a Criosites se consolidou como uma das principais agencias de criacao de sites, oferecendo solucoes completas e personalizadas para empresas de todos os portes e segmentos.</p>
+                    <p>A Criosites nasceu da paixao por tecnologia e do desejo de ajudar empresas a alcancarem seu potencial maximo no ambiente digital. Ao longo dos anos, a agencia desenvolveu centenas de projetos, desde sites institucionais elegantes ate complexas plataformas de e-commerce, sempre com foco em resultados e na satisfacao total dos clientes.</p>
+                    <p>O diferencial da Criosites esta na combinacao de criatividade, tecnologia de ponta e um atendimento proximo e personalizado. Cada projeto e tratado como unico, com dedicacao exclusiva da equipe para entender as necessidades especificas do cliente e entregar uma solucao que supera as expectativas.</p>
                 </div>
                 <div class="image-container">
                     <img src="https://kimi-web-img.moonshot.cn/img/invozone.com/eac1c0571e9b8b2054bcd1a1fd5e7246ad3bddd5.webp" alt="Equipe de desenvolvimento web" style="max-height: 400px;">
                     <p class="image-caption">Equipe especializada em desenvolvimento web da Criosites</p>
                 </div>
             </div>
-
-            <h3>Serviços Oferecidos pela Criosites</h3>
-
-            <p>A <a href="https://criosites.com.br/" target="_blank" style="color: #ff6f00; font-weight: bold; text-decoration: none;">Criação Sites Campinas</a> pela Criosites engloba uma gama completa de serviços digitais:</p>
-
+            <h3>Servicos Oferecidos pela Criosites</h3>
+            <p>A <a href="https://criosites.com.br/" target="_blank" style="color: #ff6f00; font-weight: bold; text-decoration: none;">Criacao Sites Campinas</a> pela Criosites engloba uma gama completa de servicos digitais:</p>
             <div class="cards-grid">
-                <div class="card">
-                    <div class="card-icon">💻</div>
-                    <h3>Criação de Sites</h3>
-                    <p>Sites institucionais, landing pages, blogs e portais desenvolvidos com design exclusivo, código limpo e otimização completa para mecanismos de busca.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🛒</div>
-                    <h3>Lojas Virtuais</h3>
-                    <p>E-commerces completos com integração de pagamento, controle de estoque, gestão de pedidos e todas as ferramentas necessárias para vender online.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🚀</div>
-                    <h3>SEO e Marketing Digital</h3>
-                    <p>Estratégias de otimização para buscadores, gestão de campanhas no Google Ads, marketing de conteúdo e presença em redes sociais.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🎨</div>
-                    <h3>Identidade Visual</h3>
-                    <p>Criação de logotipos, papelaria completa, manuais de marca e todos os elementos visuais que compõem a identidade da sua empresa.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">⚙️</div>
-                    <h3>Sistemas Web</h3>
-                    <p>Desenvolvimento de sistemas personalizados, intranets, extranets e aplicações web sob medida para automatizar processos da sua empresa.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🔧</div>
-                    <h3>Manutenção e Suporte</h3>
-                    <p>Planos de manutenção mensal que incluem atualizações, backups, monitoramento de segurança e suporte técnico contínuo.</p>
-                </div>
+                <div class="card"><div class="card-icon">&#128187;</div><h3>Criacao de Sites</h3><p>Sites institucionais, landing pages, blogs e portais desenvolvidos com design exclusivo, codigo limpo e otimizacao completa para mecanismos de busca.</p></div>
+                <div class="card"><div class="card-icon">&#128722;</div><h3>Lojas Virtuais</h3><p>E-commerces completos com integracao de pagamento, controle de estoque, gestao de pedidos e todas as ferramentas necessarias para vender online.</p></div>
+                <div class="card"><div class="card-icon">&#128640;</div><h3>SEO e Marketing Digital</h3><p>Estrategias de otimizacao para buscadores, gestao de campanhas no Google Ads, marketing de conteudo e presenca em redes sociais.</p></div>
+                <div class="card"><div class="card-icon">&#127912;</div><h3>Identidade Visual</h3><p>Criacao de logotipos, papelaria completa, manuais de marca e todos os elementos visuais que compoem a identidade da sua empresa.</p></div>
+                <div class="card"><div class="card-icon">&#9881;</div><h3>Sistemas Web</h3><p>Desenvolvimento de sistemas personalizados, intranets, extranets e aplicacoes web sob medida para automatizar processos da sua empresa.</p></div>
+                <div class="card"><div class="card-icon">&#128295;</div><h3>Manutencao e Suporte</h3><p>Planos de manutencao mensal que incluem atualizacoes, backups, monitoramento de seguranca e suporte tecnico continuo.</p></div>
             </div>
-
             <h3>Por que Escolher a Criosites?</h3>
-
-            <p>Existem muitas agências de <strong>criação de sites em Campinas</strong>, mas a Criosites se destaca por diversos motivos que fazem a diferença no resultado final do projeto:</p>
-
-            <p><strong>Experiência Comprovada:</strong> Com anos de atuação no mercado, a Criosites acumulou experiência em diversos segmentos e tipos de projetos. Essa bagagem permite que a equipe antecipe desafios e ofereça soluções mais eficientes.</p>
-
-            <p><strong>Equipe Multidisciplinar:</strong> A agência conta com profissionais especializados em design, programação, UX/UI, redação, SEO e marketing digital. Essa diversidade de skills garante que todos os aspectos do projeto sejam cuidados por especialistas.</p>
-
-            <p><strong>Metodologia Ágil:</strong> Utilizamos metodologias ágeis de desenvolvimento que permitem entregas parciais, feedback contínuo do cliente e adaptação rápida a mudanças. Isso resulta em projetos mais alinhados às expectativas e entregues no prazo.</p>
-
-            <p><strong>Transparência:</strong> Acreditamos em relacionamentos baseados na confiança. Por isso, mantemos nossos clientes informados sobre cada etapa do projeto, com relatórios claros e comunicação frequente.</p>
-
-            <p><strong>Foco em Resultados:</strong> Não desenvolvemos sites apenas para ficarem bonitos. Criamos soluções digitais que geram resultados mensuráveis: mais visitas, mais leads, mais vendas e mais reconhecimento de marca.</p>
-
+            <p>Existem muitas agencias de <strong>criacao de sites em Campinas</strong>, mas a Criosites se destaca por diversos motivos que fazem a diferenca no resultado final do projeto:</p>
+            <p><strong>Experiencia Comprovada:</strong> Com anos de atuacao no mercado, a Criosites acumulou experiencia em diversos segmentos e tipos de projetos. Essa bagagem permite que a equipe antecipe desafios e ofereca solucoes mais eficientes.</p>
+            <p><strong>Equipe Multidisciplinar:</strong> A agencia conta com profissionais especializados em design, programacao, UX/UI, redacao, SEO e marketing digital. Essa diversidade de skills garante que todos os aspectos do projeto sejam cuidados por especialistas.</p>
+            <p><strong>Metodologia Agil:</strong> Utilizamos metodologias ageis de desenvolvimento que permitem entregas parciais, feedback continuo do cliente e adaptacao rapida a mudancas. Isso resulta em projetos mais alinhados as expectativas e entregues no prazo.</p>
+            <p><strong>Transparencia:</strong> Acreditamos em relacionamentos baseados na confianca. Por isso, mantemos nossos clientes informados sobre cada etapa do projeto, com relatorios claros e comunicacao frequente.</p>
+            <p><strong>Foco em Resultados:</strong> Nao desenvolvemos sites apenas para ficarem bonitos. Criamos solucoes digitais que geram resultados mensuraveis: mais visitas, mais leads, mais vendas e mais reconhecimento de marca.</p>
             <div class="highlight-box">
                 <h3>Entre em Contato com a Criosites</h3>
-                <p>Pronto para transformar sua presença digital? A Criosites está à disposição para ajudar seu negócio a crescer na internet.</p>
+                <p>Pronto para transformar sua presenca digital? A Criosites esta a disposicao para ajudar seu negocio a crescer na internet.</p>
                 <p style="font-size: 1.2em; margin: 20px 0;">Ligue agora gratuitamente:</p>
                 <a href="tel:08005900348" class="phone-number">0800 - 590 0348</a>
                 <p style="margin-top: 25px; font-size: 1em;">Ou visite nosso site: <a href="https://criosites.com.br/" target="_blank" style="color: #ff6f00; font-weight: bold;">criosites.com.br</a></p>
             </div>
-
-            <h3>Atendimento em Toda a Região de Campinas</h3>
-
-            <p>A Criosites atende não apenas Campinas, mas toda a região metropolitana, incluindo Valinhos, Vinhedo, Indaiatuba, Hortolândia, Sumaré, Paulínia e outras cidades próximas. Nossa estrutura permite atender clientes presencialmente em Campinas e remotamente em qualquer lugar do Brasil.</p>
-
-            <p>Seja qual for o tamanho do seu negócio ou a complexidade do seu projeto, a <a href="https://criosites.com.br/" target="_blank" style="color: #ff6f00; font-weight: bold; text-decoration: none;">Criação Sites Campinas</a> pela Criosites é a escolha certa para quem busca qualidade, profissionalismo e resultados.</p>
+            <h3>Atendimento em Toda a Regiao de Campinas</h3>
+            <p>A Criosites atende nao apenas Campinas, mas toda a regiao metropolitana, incluindo Valinhos, Vinhedo, Indaiatuba, Hortolandia, Sumare, Paulinia e outras cidades proximas. Nossa estrutura permite atender clientes presencialmente em Campinas e remotamente em qualquer lugar do Brasil.</p>
+            <p>Seja qual for o tamanho do seu negocio ou a complexidade do seu projeto, a <a href="https://criosites.com.br/" target="_blank" style="color: #ff6f00; font-weight: bold; text-decoration: none;">Criacao Sites Campinas</a> pela Criosites e a escolha certa para quem busca qualidade, profissionalismo e resultados.</p>
         </div>
     </section>
 
-    <!-- FAQ -->
     <section id="faq">
         <div class="container">
-            <h2>Perguntas Frequentes sobre Criação de Sites</h2>
-
+            <h2>Perguntas Frequentes sobre Criacao de Sites</h2>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     <span>Quanto tempo leva para criar um site profissional?</span>
                     <span style="font-size: 1.5em;">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>O prazo para <strong>criação de sites</strong> varia de acordo com a complexidade do projeto. Um site institucional simples pode ficar pronto em 15 a 30 dias úteis. Já projetos mais complexos, como lojas virtuais ou sistemas personalizados, podem levar de 45 a 90 dias. Na Criosites, trabalhamos com cronogramas bem definidos e mantemos o cliente informado sobre o andamento do projeto em cada etapa. É importante lembrar que a qualidade do conteúdo fornecido pelo cliente e a velocidade de aprovação das etapas também influenciam no prazo final.</p>
+                    <p>O prazo para <strong>criacao de sites</strong> varia de acordo com a complexidade do projeto. Um site institucional simples pode ficar pronto em 15 a 30 dias uteis. Ja projetos mais complexos, como lojas virtuais ou sistemas personalizados, podem levar de 45 a 90 dias. Na Criosites, trabalhamos com cronogramas bem definidos e mantemos o cliente informado sobre o andamento do projeto em cada etapa. E importante lembrar que a qualidade do conteudo fornecido pelo cliente e a velocidade de aprovacao das etapas tambem influenciam no prazo final.</p>
                 </div>
             </div>
-
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     <span>Quanto custa criar um site em Campinas?</span>
                     <span style="font-size: 1.5em;">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>O investimento em <strong>criação de sites em Campinas</strong> depende de vários fatores: tipo de site, número de páginas, funcionalidades específicas, integrações necessárias e nível de personalização do design. Sites institucionais básicos têm investimentos mais acessíveis, enquanto projetos complexos como e-commerces ou sistemas web exigem investimentos maiores. Na Criosites, oferecemos orçamentos personalizados e transparentes, sem custos ocultos. Entre em contato pelo <strong>0800 - 590 0348</strong> e solicite um orçamento gratuito para o seu projeto.</p>
+                    <p>O investimento em <strong>criacao de sites em Campinas</strong> depende de varios fatores: tipo de site, numero de paginas, funcionalidades especificas, integracoes necessarias e nivel de personalizacao do design. Sites institucionais basicos tem investimentos mais acessiveis, enquanto projetos complexos como e-commerces ou sistemas web exigem investimentos maiores. Na Criosites, oferecemos orcamentos personalizados e transparentes, sem custos ocultos. Entre em contato pelo <strong>0800 - 590 0348</strong> e solicite um orcamento gratuito para o seu projeto.</p>
                 </div>
             </div>
-
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
-                    <span>Preciso ter domínio e hospedagem antes de contratar a criação do site?</span>
+                    <span>Preciso ter dominio e hospedagem antes de contratar a criacao do site?</span>
                     <span style="font-size: 1.5em;">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Não é necessário. A Criosites pode auxiliar na aquisição do domínio (o endereço do seu site na internet) e na contratação da <strong>hospedagem de sites</strong> mais adequada para o seu projeto. Trabalhamos com parceiros de confiança que oferecem serviços de hospedagem de alta qualidade, com uptime garantido, suporte técnico 24/7 e recursos otimizados para performance. Caso você já possua domínio e hospedagem, podemos utilizar a infraestrutura existente ou recomendar uma migração se necessário.</p>
+                    <p>Nao e necessario. A Criosites pode auxiliar na aquisicao do dominio (o endereco do seu site na internet) e na contratacao da <strong>hospedagem de sites</strong> mais adequada para o seu projeto. Trabalhamos com parceiros de confianca que oferecem servicos de hospedagem de alta qualidade, com uptime garantido, suporte tecnico 24/7 e recursos otimizados para performance. Caso voce ja possua dominio e hospedagem, podemos utilizar a infraestrutura existente ou recomendar uma migracao se necessario.</p>
                 </div>
             </div>
-
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     <span>Meu site vai aparecer no Google?</span>
                     <span style="font-size: 1.5em;">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Sim! Todos os sites desenvolvidos pela Criosites são construídos seguindo as melhores práticas de SEO (Otimização para Mecanismos de Busca). Isso inclui estrutura técnica otimizada, código limpo, velocidade de carregamento rápida, responsividade mobile e conteúdo estratégico. Além disso, realizamos o cadastro do site no Google Search Console e criamos o sitemap para facilitar a indexação. No entanto, é importante entender que o ranqueamento nos primeiros resultados do Google depende também de fatores como concorrência, autoridade do domínio e estratégia de conteúdo contínua.</p>
+                    <p>Sim! Todos os sites desenvolvidos pela Criosites sao construidos seguindo as melhores praticas de SEO (Otimizacao para Mecanismos de Busca). Isso inclui estrutura tecnica otimizada, codigo limpo, velocidade de carregamento rapida, responsividade mobile e conteudo estrategico. Alem disso, realizamos o cadastro do site no Google Search Console e criamos o sitemap para facilitar a indexacao. No entanto, e importante entender que o ranqueamento nos primeiros resultados do Google depende tambem de fatores como concorrencia, autoridade do dominio e estrategia de conteudo continua.</p>
                 </div>
             </div>
-
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
-                    <span>O site será responsivo para celulares e tablets?</span>
+                    <span>O site sera responsivo para celulares e tablets?</span>
                     <span style="font-size: 1.5em;">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Absolutamente sim. Em 2026, mais de 70% dos acessos à internet no Brasil são realizados por dispositivos móveis. Por isso, todos os sites desenvolvidos pela Criosites possuem design responsivo como padrão, não como opcional. Isso significa que seu site se adaptará automaticamente a qualquer tamanho de tela, oferecendo uma experiência de navegação perfeita em smartphones, tablets, notebooks e desktops. O Google também prioriza sites mobile-friendly em seus resultados de busca, tornando o design responsivo essencial para o SEO.</p>
+                    <p>Absolutamente sim. Em 2026, mais de 70% dos acessos a internet no Brasil sao realizados por dispositivos moveis. Por isso, todos os sites desenvolvidos pela Criosites possuem design responsivo como padrao, nao como opcional. Isso significa que seu site se adaptara automaticamente a qualquer tamanho de tela, oferecendo uma experiencia de navegacao perfeita em smartphones, tablets, notebooks e desktops. O Google tambem prioriza sites mobile-friendly em seus resultados de busca, tornando o design responsivo essencial para o SEO.</p>
                 </div>
             </div>
-
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
-                    <span>Posso atualizar o conteúdo do site sozinho?</span>
+                    <span>Posso atualizar o conteudo do site sozinho?</span>
                     <span style="font-size: 1.5em;">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Sim! Desenvolvemos sites com sistemas de gerenciamento de conteúdo (CMS) intuitivos, como WordPress, que permitem que você mesmo atualize textos, imagens, produtos e outras informações sem precisar de conhecimentos técnicos em programação. Oferecemos treinamento completo para que você e sua equipe possam gerenciar o site com autonomia. Para clientes que preferem focar no negócio, também disponibilizamos planos de manutenção onde nossa equipe cuida de todas as atualizações.</p>
+                    <p>Sim! Desenvolvemos sites com sistemas de gerenciamento de conteudo (CMS) intuitivos, como WordPress, que permitem que voce mesmo atualize textos, imagens, produtos e outras informacoes sem precisar de conhecimentos tecnicos em programacao. Oferecemos treinamento completo para que voce e sua equipe possam gerenciar o site com autonomia. Para clientes que preferem focar no negocio, tambem disponibilizamos planos de manutencao onde nossa equipe cuida de todas as atualizacoes.</p>
                 </div>
             </div>
-
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
-                    <span>O que está incluído no suporte pós-lançamento?</span>
+                    <span>O que esta incluido no suporte pos-lancamento?</span>
                     <span style="font-size: 1.5em;">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Após o lançamento do site, oferecemos um período de garantia onde corrigimos qualquer bug ou problema que possa surgir sem custo adicional. Além disso, disponibilizamos planos de manutenção mensal que incluem: atualizações de segurança, backups regulares, monitoramento de uptime, pequenas alterações de conteúdo, relatórios de performance e suporte técnico prioritário. A Criosites acredita que o relacionamento com o cliente não termina no lançamento do site, mas sim que se fortalece ao longo do tempo.</p>
+                    <p>Apos o lancamento do site, oferecemos um periodo de garantia onde corrigimos qualquer bug ou problema que possa surgir sem custo adicional. Alem disso, disponibilizamos planos de manutencao mensal que incluem: atualizacoes de seguranca, backups regulares, monitoramento de uptime, pequenas alteracoes de conteudo, relatorios de performance e suporte tecnico prioritario. A Criosites acredita que o relacionamento com o cliente nao termina no lancamento do site, mas sim que se fortalece ao longo do tempo.</p>
                 </div>
             </div>
-
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
-                    <span>Vocês criam lojas virtuais (e-commerce)?</span>
+                    <span>Voces criam lojas virtuais (e-commerce)?</span>
                     <span style="font-size: 1.5em;">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Sim! A Criosites é especializada em desenvolvimento de lojas virtuais completas e profissionais. Nossos e-commerces incluem: catálogo de produtos com fotos e descrições, carrinho de compras, integração com os principais gateways de pagamento (Mercado Pago, PagSeguro, Stripe, etc.), cálculo automático de frete, controle de estoque, área do cliente com histórico de pedidos, cupons de desconto, relatórios de vendas e muito mais. Também oferecemos consultoria em estratégias de e-commerce para maximizar suas vendas online.</p>
+                    <p>Sim! A Criosites e especializada em desenvolvimento de lojas virtuais completas e profissionais. Nossos e-commerces incluem: catalogo de produtos com fotos e descricoes, carrinho de compras, integracao com os principais gateways de pagamento (Mercado Pago, PagSeguro, Stripe, etc.), calculo automatico de frete, controle de estoque, area do cliente com historico de pedidos, cupons de desconto, relatorios de vendas e muito mais. Tambem oferecemos consultoria em estrategias de e-commerce para maximizar suas vendas online.</p>
                 </div>
             </div>
-
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
-                    <span>Como funciona o processo de criação do site?</span>
+                    <span>Como funciona o processo de criacao do site?</span>
                     <span style="font-size: 1.5em;">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Nosso processo de <strong>criação de sites</strong> é dividido em etapas claras: (1) Briefing - entendemos seu negócio, objetivos e público-alvo; (2) Proposta - apresentamos o escopo do projeto, investimento e prazo; (3) Design - criamos o layout visual do site para aprovação; (4) Desenvolvimento - programamos o site com todas as funcionalidades; (5) Conteúdo - inserimos textos, imagens e otimizamos para SEO; (6) Testes - verificamos funcionamento em diferentes dispositivos e navegadores; (7) Treinamento - ensinamos você a gerenciar o site; (8) Lançamento - colocamos o site no ar e monitoramos. Durante todo o processo, você recebe atualizações e pode acompanhar o andamento do projeto.</p>
+                    <p>Nosso processo de <strong>criacao de sites</strong> e dividido em etapas claras: (1) Briefing - entendemos seu negocio, objetivos e publico-alvo; (2) Proposta - apresentamos o escopo do projeto, investimento e prazo; (3) Design - criamos o layout visual do site para aprovacao; (4) Desenvolvimento - programamos o site com todas as funcionalidades; (5) Conteudo - inserimos textos, imagens e otimizamos para SEO; (6) Testes - verificamos funcionamento em diferentes dispositivos e navegadores; (7) Treinamento - ensinamos voce a gerenciar o site; (8) Lancamento - colocamos o site no ar e monitoramos. Durante todo o processo, voce recebe atualizacoes e pode acompanhar o andamento do projeto.</p>
                 </div>
             </div>
-
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     <span>A Criosites atende empresas de fora de Campinas?</span>
                     <span style="font-size: 1.5em;">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Sim! Embora estejamos sediados em Campinas e atuemos fortemente na região, a Criosites atende clientes de todo o Brasil. Graças às ferramentas de comunicação modernas, podemos realizar reuniões por videoconferência, compartilhar protótipos online e manter uma comunicação fluida com clientes de qualquer cidade. Nossa equipe já desenvolveu projetos para empresas de diversos estados brasileiros, sempre com o mesmo padrão de qualidade e atenção ao cliente.</p>
+                    <p>Sim! Embora estejamos sediados em Campinas e atuemos fortemente na regiao, a Criosites atende clientes de todo o Brasil. Gracas as ferramentas de comunicacao modernas, podemos realizar reunioes por videoconferencia, compartilhar prototipos online e manter uma comunicacao fluida com clientes de qualquer cidade. Nossa equipe ja desenvolveu projetos para empresas de diversos estados brasileiros, sempre com o mesmo padrao de qualidade e atencao ao cliente.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Depoimentos -->
     <section id="depoimentos" style="background: white;">
         <div class="container">
             <h2>O que Nossos Clientes Dizem</h2>
-
             <div class="testimonials-grid">
                 <div class="testimonial">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">Contratamos a Criosites para desenvolver o site da nossa clínica médica em Campinas e o resultado superou todas as expectativas. O site ficou moderno, rápido e já estamos recebendo muito mais agendamentos pelo site. A equipe foi extremamente profissional e atenciosa durante todo o processo. Recomendo de olhos fechados!</p>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">Contratamos a Criosites para desenvolver o site da nossa clinica medica em Campinas e o resultado superou todas as expectativas. O site ficou moderno, rapido e ja estamos recebendo muito mais agendamentos pelo site. A equipe foi extremamente profissional e atenciosa durante todo o processo. Recomendo de olhos fechados!</p>
                     <div class="testimonial-author">Dra. Fernanda Martins</div>
-                    <div class="testimonial-company">Clínica Vida Saúde - Campinas/SP</div>
+                    <div class="testimonial-company">Clinica Vida Saude - Campinas/SP</div>
                 </div>
-
                 <div class="testimonial">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">Nossa loja virtual foi desenvolvida pela Criosites e em menos de 6 meses já tínhamos aumentado as vendas em 300%. A plataforma é intuitiva, os clientes elogiam a facilidade de compra e o suporte técnico sempre responde rapidamente quando precisamos. A melhor decisão que tomamos foi escolher a Criosites para nossa criação de sites.</p>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">Nossa loja virtual foi desenvolvida pela Criosites e em menos de 6 meses ja tinhamos aumentado as vendas em 300%. A plataforma e intuitiva, os clientes elogiam a facilidade de compra e o suporte tecnico sempre responde rapidamente quando precisamos. A melhor decisao que tomamos foi escolher a Criosites para nossa criacao de sites.</p>
                     <div class="testimonial-author">Carlos Eduardo Silva</div>
                     <div class="testimonial-company">Moda & Estilo E-commerce - Valinhos/SP</div>
                 </div>
-
                 <div class="testimonial">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">Sou advogado em Campinas e precisava de um site que transmitisse seriedade e credibilidade. A Criosites entendeu perfeitamente o que eu precisava e entregou um site elegante, otimizado para SEO e que já aparece na primeira página do Google para várias palavras-chave do meu segmento. O retorno sobre o investimento foi imediato.</p>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">Sou advogado em Campinas e precisava de um site que transmitisse seriedade e credibilidade. A Criosites entendeu perfeitamente o que eu precisava e entregou um site elegante, otimizado para SEO e que ja aparece na primeira pagina do Google para varias palavras-chave do meu segmento. O retorno sobre o investimento foi imediato.</p>
                     <div class="testimonial-author">Dr. Ricardo Oliveira</div>
                     <div class="testimonial-company">Oliveira & Associados Advocacia - Campinas/SP</div>
                 </div>
-
                 <div class="testimonial">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">Nossa construtora precisava de um site que mostrasse nossos empreendimentos de forma impecável. A Criosites criou um site com galerias de fotos em alta resolução, tour virtual e integração com nosso CRM. O resultado é um site premiado que nos diferencia da concorrência. A hospedagem também é excelente, nunca tivemos problemas de indisponibilidade.</p>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">Nossa construtora precisava de um site que mostrasse nossos empreendimentos de forma impecavel. A Criosites criou um site com galerias de fotos em alta resolucao, tour virtual e integracao com nosso CRM. O resultado e um site premiado que nos diferencia da concorrencia. A hospedagem tambem e excelente, nunca tivemos problemas de indisponibilidade.</p>
                     <div class="testimonial-author">Ana Paula Mendes</div>
                     <div class="testimonial-company">Mendes Construtora - Indaiatuba/SP</div>
                 </div>
-
                 <div class="testimonial">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">Somos uma startup de tecnologia de Campinas e precisávamos de um site que comunicasse inovação. A Criosites entregou muito além do esperado, com animações modernas, integração com nossas APIs e um blog que já se tornou referência no nosso nicho. A equipe técnica é muito competente e entende de verdade de tecnologia.</p>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">Somos uma startup de tecnologia de Campinas e precisavamos de um site que comunicasse inovacao. A Criosites entregou muito alem do esperado, com animacoes modernas, integracao com nossas APIs e um blog que ja se tornou referencia no nosso nicho. A equipe tecnica e muito competente e entende de verdade de tecnologia.</p>
                     <div class="testimonial-author">Lucas Andrade</div>
                     <div class="testimonial-company">TechInova Startup - Campinas/SP</div>
                 </div>
-
                 <div class="testimonial">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">Tinha um site antigo e lento que prejudicava minha imagem profissional. A Criosites fez a migração completa para uma nova plataforma, com design moderno e hospedagem de qualidade. Agora meus clientes frequentemente elogiam o site e eu me sinto orgulhoso em compartilhar meu endereço online. O atendimento pelo 0800 é excelente!</p>
-                    <div class="testimonial-author">Patrícia Gomes</div>
-                    <div class="testimonial-company">Patrícia Gomes Consultoria - Sumaré/SP</div>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">Tinha um site antigo e lento que prejudicava minha imagem profissional. A Criosites fez a migracao completa para uma nova plataforma, com design moderno e hospedagem de qualidade. Agora meus clientes frequentemente elogiam o site e eu me sinto orgulhoso em compartilhar meu endereco online. O atendimento pelo 0800 e excelente!</p>
+                    <div class="testimonial-author">Patricia Gomes</div>
+                    <div class="testimonial-company">Patricia Gomes Consultoria - Sumare/SP</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contato -->
     <section id="contato">
         <div class="container">
             <h2>Entre em Contato</h2>
-            
             <div class="highlight-box">
-                <h3>Pronto para ter o melhor site da sua região?</h3>
-                <p>Não deixe sua empresa para trás no mundo digital. A Criosites está pronta para transformar sua presença online com sites profissionais, modernos e que geram resultados reais.</p>
-                
-                <p style="font-size: 1.3em; margin: 30px 0 15px;">📞 Ligue gratuitamente:</p>
+                <h3>Pronto para ter o melhor site da sua regiao?</h3>
+                <p>Nao deixe sua empresa para tras no mundo digital. A Criosites esta pronta para transformar sua presenca online com sites profissionais, modernos e que geram resultados reais.</p>
+                <p style="font-size: 1.3em; margin: 30px 0 15px;">&#128222; Ligue gratuitamente:</p>
                 <a href="tel:08005900348" class="phone-number">0800 - 590 0348</a>
-                
-                <p style="margin-top: 30px; font-size: 1.1em;">🌐 Ou acesse: <a href="https://criosites.com.br/" target="_blank" style="color: #ff6f00; font-weight: bold; text-decoration: underline;">criosites.com.br</a></p>
-                
-                <p style="margin-top: 20px; font-size: 1em;">📍 Atendemos Campinas e toda a região metropolitana</p>
+                <p style="margin-top: 30px; font-size: 1.1em;">&#127760; Ou acesse: <a href="https://criosites.com.br/" target="_blank" style="color: #ff6f00; font-weight: bold; text-decoration: underline;">criosites.com.br</a></p>
+                <p style="margin-top: 20px; font-size: 1em;">&#128205; Atendemos Campinas e toda a regiao metropolitana</p>
             </div>
-
             <div style="text-align: center; margin-top: 40px;">
-                <p style="font-size: 1.1em; color: #555;">A <a href="https://criosites.com.br/" target="_blank" style="color: #ff6f00; font-weight: bold;">Criação Sites Campinas</a> de qualidade está a um telefonema de distância. Nosso 0800 está disponível para atender você de segunda a sexta, das 8h às 18h.</p>
+                <p style="font-size: 1.1em; color: #555;">A <a href="https://criosites.com.br/" target="_blank" style="color: #ff6f00; font-weight: bold;">Criacao Sites Campinas</a> de qualidade esta a um telefonema de distancia. Nosso 0800 esta disponivel para atender voce de segunda a sexta, das 8h as 18h.</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">
                     <h4>Criosites</h4>
-                    <p style="text-align: left; color: #b0bec5;">Agência especializada em <strong>criação de sites em Campinas</strong>, desenvolvimento web, lojas virtuais, SEO e hospedagem de sites. Transformamos ideias em presença digital de sucesso.</p>
+                    <p style="text-align: left; color: #b0bec5;">Agencia especializada em <strong>criacao de sites em Campinas</strong>, desenvolvimento web, lojas virtuais, SEO e hospedagem de sites. Transformamos ideias em presenca digital de sucesso.</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Serviços</h4>
+                    <h4>Servicos</h4>
                     <ul>
-                        <li><a href="#">Criação de Sites</a></li>
+                        <li><a href="#">Criacao de Sites</a></li>
                         <li><a href="#">Lojas Virtuais</a></li>
                         <li><a href="#">Hospedagem de Sites</a></li>
                         <li><a href="#">SEO e Marketing Digital</a></li>
@@ -957,83 +478,58 @@
                 <div class="footer-section">
                     <h4>Contato</h4>
                     <ul>
-                        <li>📞 <a href="tel:08005900348">0800 - 590 0348</a></li>
-                        <li>🌐 <a href="https://criosites.com.br/" target="_blank">criosites.com.br</a></li>
-                        <li>📍 Campinas - SP</li>
+                        <li>&#128222; <a href="tel:08005900348">0800 - 590 0348</a></li>
+                        <li>&#127760; <a href="https://criosites.com.br/" target="_blank">criosites.com.br</a></li>
+                        <li>&#128205; Campinas - SP</li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Região Atendida</h4>
+                    <h4>Regiao Atendida</h4>
                     <ul>
                         <li>Campinas</li>
                         <li>Valinhos</li>
                         <li>Vinhedo</li>
                         <li>Indaiatuba</li>
-                        <li>Hortolândia</li>
-                        <li>Sumaré</li>
-                        <li>Paulínia</li>
+                        <li>Hortolandia</li>
+                        <li>Sumare</li>
+                        <li>Paulinia</li>
                     </ul>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>© 2026 Criosites - Todos os direitos reservados.</p>
-                <p>Especialistas em <a href="https://criosites.com.br/" target="_blank">Criação Sites Campinas</a> | Desenvolvimento Web Profissional</p>
+                <p>&copy; 2026 Criosites - Todos os direitos reservados.</p>
+                <p>Especialistas em <a href="https://criosites.com.br/" target="_blank">Criacao Sites Campinas</a> | Desenvolvimento Web Profissional</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // FAQ Toggle
         function toggleFaq(element) {
             const answer = element.nextElementSibling;
             const icon = element.querySelector('span:last-child');
-            
             if (answer.classList.contains('active')) {
                 answer.classList.remove('active');
                 icon.textContent = '+';
             } else {
-                // Close all other FAQs
-                document.querySelectorAll('.faq-answer').forEach(item => {
-                    item.classList.remove('active');
-                });
-                document.querySelectorAll('.faq-question span:last-child').forEach(item => {
-                    item.textContent = '+';
-                });
-                
+                document.querySelectorAll('.faq-answer').forEach(item => { item.classList.remove('active'); });
+                document.querySelectorAll('.faq-question span:last-child').forEach(item => { item.textContent = '+'; });
                 answer.classList.add('active');
-                icon.textContent = '−';
+                icon.textContent = String.fromCharCode(8722);
             }
         }
-
-        // Smooth scroll
+        function closeTestimonial() {
+            document.getElementById('floatingTestimonial').style.display = 'none';
+        }
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
             });
         });
-
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
         document.querySelectorAll('section').forEach(section => {
             section.classList.add('fade-in');
             observer.observe(section);
